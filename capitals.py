@@ -1,3 +1,5 @@
+import random
+
 # an array of state dictionaries
 states = [
 {
@@ -151,3 +153,23 @@ states = [
     "name": "Wyoming",
     "capital": "Cheyenne"
 }]
+
+score = 0
+user_name = ""
+game_array = states[0:5]
+
+random.shuffle(game_array)
+
+print("Welcome to the State Capitals game! Think you can name them all?")
+
+user_name = input("Please enter your username: ");
+
+for state, index in game_array:
+  state_name = state.get("name")
+  state_capital = state.get("capital")
+  guess_capital = input("What is the capital of {}?", state_name)
+  if (guess_capital == state_capital):
+    print("You are correct! +1 point")
+  else:
+    print("I'm sorry, the capital of {} is {}.", state_name, state_capital)
+  print("End of round {} of {}. {}'s Score: {}", index, len(game_array), user_name, score)
