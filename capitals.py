@@ -164,12 +164,14 @@ print("Welcome to the State Capitals game! Think you can name them all?")
 
 user_name = input("Please enter your username: ");
 
-for state, index in game_array:
-  state_name = state.get("name")
-  state_capital = state.get("capital")
-  guess_capital = input("What is the capital of {}?", state_name)
-  if (guess_capital == state_capital):
+for index, state in enumerate(game_array):
+  name = state['name']
+  capital = state['capital']
+  #for key, var in state.items():
+  guess_capital = input(f"What is the capital of {name}? ")
+  if (guess_capital == capital):
+    score = score + 1
     print("You are correct! +1 point")
   else:
-    print("I'm sorry, the capital of {} is {}.", state_name, state_capital)
-  print("End of round {} of {}. {}'s Score: {}", index, len(game_array), user_name, score)
+    print(f"I'm sorry, the capital of {name} is {capital}.")
+  print("End of round {} of {}. {}'s Score: {}".format(index + 1, len(game_array), user_name, score))
